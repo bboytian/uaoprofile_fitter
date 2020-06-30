@@ -1,0 +1,9 @@
+name: mpl
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - matplotlib=3.2.0
+  - numpy=1.18.1
+  - pandas=1.0.1
+  - python=3.8.2
