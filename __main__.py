@@ -17,7 +17,7 @@ def main():
             
 
             # printing coefficients
-            print(coeff_a)
+
 
         print('\n')
 

@@ -27,3 +27,10 @@ ENDSTR = 'Tropopauses:'
 # data cleaning params
 DTALTLOW, DTALTHIGH = 15, 60     # conservative gradient thres
 WINDOWSIZE = 7                    # odd number
+
+
+#  data fitting params
+COMPARELST = [
+    'P', 'Altitude'
+]
+POLYDEG = 50
