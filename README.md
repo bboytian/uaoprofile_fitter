@@ -21,3 +21,7 @@ Coefficients sets between data directories are seperated by a newline
 ## Configuration
 
 All configurable qualities of the code can be adjusted in `.params`
+
+## Future Development
+
+Data fitters library can be expanded, and called in `__main__` by specifying the right fitter in .params

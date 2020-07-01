@@ -40,6 +40,9 @@ def main(datadir, ampmstr):
         df = df.replace({'-': None})
         # changing data type
         df = df.astype('float64')
+        # scaling units
+        for key in UNITSCALEDIC:
+            df[COLDIC[key]] = df[COLDIC[key]] * UNITSCALEDIC[key]
 
         # cleaning up;thresholding by altitude vs time gradient
         dtalt_a = np.gradient(df[COLDIC['Altitude']], df[COLDIC['time']])
@@ -70,16 +73,20 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
 
     # params
-    regexdir = '/home/tianli/SOLAR_EMA_project/data/UAO_profiles/UAO_raw_data_2019/2019*'  # regex directory containing multiple dates
-    ampmstr = '0000'
+    regexdir = REGEXDIR  # regex directory containing multiple dates
+    ampmstr = AMSTR
 
     # running
     for i, data_dir in enumerate(glob(regexdir)):
+
+        if data_dir != osp.join(REGEXDIR[:-1], '201905'):
+            continue
+        
         print(f'working on {data_dir}')
         df_l = main(data_dir, ampmstr)
 
         # Plotting
-        for df in df_l[:1]:
+        for df in df_l:
             pltcolor = f'C{i}'
 
             # plot altitiude against pressure
@@ -90,4 +97,5 @@ if __name__ == '__main__':
             plt.plot(df[COLDIC['time']].values, df[COLDIC['Altitude']].values,
                      color=pltcolor)
 
+            
     plt.show()

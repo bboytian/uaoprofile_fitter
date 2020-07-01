@@ -21,10 +21,10 @@ def main():
     datadir_l.sort()
 
     for data_dir in datadir_l:
-        print(f'working on: {data_dir}')
+        # print(f'working on: {data_dir}')
 
-        for ampmstr in [AMSTR, PMSTR]:
-            print(f'coeff for {ampmstr}hrs')
+        for ampmstr in [AMSTR]:#, PMSTR]:
+            # print(f'coeff for {ampmstr}hrs')
             # reading data
             df_l = data_reader(data_dir, ampmstr)
 
@@ -34,10 +34,13 @@ def main():
 
             # printing coefficients
             for i, descrip in enumerate(descrip_l):
-                print(descrip)
+                if i != 1:
+                    continue
+                # print(descrip)
                 print(coeff_l[i])
+            # print('\n')
 
-        print('\n\n')
+        # print('\n\n')
 
 
 if __name__ == '__main__':
